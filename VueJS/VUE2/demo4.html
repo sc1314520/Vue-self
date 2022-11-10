@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <h1>妳好 {{name}}</h1>
+    </div>
+</body>
+    <script>
+
+        // const v = new Vue({
+        //     //el:'#root',
+        //     data:{
+        //         name:'Jack'
+        //     }
+        // })
+        // // 第二種 el 寫法
+        // v.$mount('#root');
+
+
+
+
+        new Vue({
+            el:'#root',
+
+            // 第二種 data 寫法：函數式
+            data(){
+                return {
+                    name:'Jack'
+                }
+            }
+            // data:function(){} 也可以，但不要寫 ()==>{} 箭頭函數
+        })
+        
+        
+
+
+
+    </script>
+</html>

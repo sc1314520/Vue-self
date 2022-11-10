@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="js/vue.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <!-- {{}} 內可放 JS 表達式 (生成值) -->
+    <div id="root">
+        <h1>Hello {{name.toUpperCase()}}, {{address}} {{new Date()}}</h1>
+    </div>
+
+
+
+    <script>
+        Vue.config.productionTip=false; // 阻止生產提示
+        
+        // 一對一 -> 一個容器配一個 VUE
+        new Vue({
+            // id 或 class
+            el:'#root',
+            data:{ // 用於儲存數據
+                name:'abcdefg',
+                address:'北京'
+            }  
+        });
+    </script>
+</body>
+</html>
