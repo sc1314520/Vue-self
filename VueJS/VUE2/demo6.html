@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let person={
+            name:'張三',
+            sex:'male'
+        }
+
+        let number =18;
+        Object.defineProperty(person,'age',{
+            // value:18, // 不參與遍歷
+            // enumerable:true, // 開啟功能，默認值為 false
+            // writable:true ,// 控制屬性是否可以被修改
+            // configurable:true, // 控制屬性是否可以被刪除
+
+            // 讀取 age 返回該值。
+            get(){
+                return number
+            },
+
+            // 修改資料
+            set(value){
+                number=value
+            }
+
+        })
+        number=19;
+        console.log(person.age); // 19
+
+
+        person.age=30;
+        console.log(number); // 30
+
+        console.log(Object.keys(person)) // [name,sex,age] (開啟後)
+        for(let key in person){
+            console.log(person[key])
+        }
+        console.log(person) // {name: '張三', sex: 'male', age: 18}
+
+        delete person.name;
+        console.log(person);
+
+        delete person.age
+        console.log(person)
+    </script>
+</body>
+</html>

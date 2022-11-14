@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <h2>學校名稱：{{_data.name}}</h2>
+        <h2>學校地址：{{address}}</h2>
+    </div>  
+</body>
+<script>
+    var x= new Vue({
+        el:'#root',
+        data:{
+            name:"啦啦啦",
+            address:"123"
+        }
+    })
+    console.log(x.name); // getter
+    x.name="你你你" // setter
+
+    console.log(x._data); // 取得整理數據
+    console.log(x._data.name == x.name) // true
+</script>
+</html>
