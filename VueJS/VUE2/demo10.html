@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<title>键盘事件</title>
+		<!-- 引入Vue -->
+		<script type="text/javascript" src="js/vue.js"></script>
+	</head>
+	<body>
+		
+		<div id="root">
+			<h2>歡迎來到{{name}}</h2>
+			<input type="text" placeholder="按下回车提示输入" @keyup.enter="showInfo">
+
+            <!-- CapsLock 要這樣寫 -->
+            <input type="text" placeholder="按下提示输入" @keyup.caps-lock="showInfo">
+
+            <!-- 特殊要配合 keydown : ctrl alt shift meta-->
+            <input type="text" placeholder="按下提示输入" @keydown.tab="showInfo">
+
+            <!-- 特殊要搭配 keyup: 隨意雙鍵 -->
+            <input type="text" placeholder="按下提示输入" @keyup.ctrl="showInfo">
+
+            <!-- 指定雙鍵 -->
+            <input type="text" placeholder="按下提示输入" @keyup.ctrl.y="showInfo">
+            <!-- 自訂別名 -->
+            <input type="text" placeholder="按下提示输入" @keyup.huiche="showInfo">
+		</div>
+	</body>
+
+	<script type="text/javascript">
+		Vue.config.productionTip = false //阻止 vue 在启动时生成生产提示。
+		Vue.config.keyCodes.huiche = 13 //定义了一个别名按键
+
+		new Vue({
+			el:'#root',
+			data:{
+				name:'矽谷'
+			},
+			methods: {
+				showInfo(e){
+					// console.log(e.key,e.keyCode)
+                    // if(e.keyCode!==13){ // enter
+                    //     return
+                    // }
+                    // else{
+                    //     console.log(e.target.value)
+                    // }
+                    console.log(e.key , e.keyCode)
+				}
+			},
+		})
+	</script>
+</html>

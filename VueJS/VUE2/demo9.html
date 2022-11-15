@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/vue.js"></script>
+</head>
+<style>
+    *{
+        margin-top: 20px;
+    }
+    .demo1{
+        height: 50px;
+        background: gray;
+    }
+    .box1{
+        padding: 5px;
+        background: skyblue;
+    }
+    .box2{
+        padding: 5px;
+        background: orange;
+    }
+    .list{
+        width: 200px;
+        height: 40px;
+        background: peru;
+        overflow: auto;
+    }
+</style>
+<body>
+    <div id="root">
+        <h1>歡迎來到 {{name}}</h1>
+        <!-- prevent 阻止默認事件 -->
+        <a href="https://www.google.com" @click.prevent="showInfo">點我提示信息</a><br>
+        <!-- stop 阻止事件冒泡-->
+        <div class="demo1">
+            <button @click.stop="showInfo">點我提示信息</button>
+        </div>
+
+        <div class="demo1"> <!-- 可以連著寫 -->
+            <button @click.stop.prevent ="showInfo">點我提示信息</button>
+        </div>
+        <!-- once 事件只觸發一次 -->
+        <button  href="https://www.google.com" @click.once="showInfo">點我提示信息</button>
+        <!-- capture 事件捕獲模式 1,2   冒泡 2,1-->
+        <div class="box1" @click.capture="showMsg(1)">
+            div1
+            <div class="box2" @click="showMsg(2)">
+                div2
+            </div>
+        </div>
+
+        <!-- self 只有 event.target 是當前操作元素才觸發事件 也可以阻止冒泡-->
+        <div class="demo1" @click.self="showInfo">
+            <button @click.stop="showInfo">點我提示信息</button>
+        </div>
+        <!-- passive 事件默認行為立即執行，無需等待事件回調執行完畢-->
+        <ul  @scorll="demo" @wheel.passive="demo2" class="list">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+        </ul>
+    </div>
+</body>
+    <script>
+        new Vue({
+            el:'#root',
+            data:{
+                name:'硅谷'
+            },
+            methods:{
+                showInfo(){
+                    
+                    alert('妳好');
+                },
+                showMsg(msg){
+                    console.log(msg)
+                },
+                demo(){
+                    console.log("滾動條滾動")
+                },
+                demo2(){
+                    for(var i=0; i <10000; i++){
+                        console.log('#')
+                    }
+                    console.log("鼠標滾動")
+                }
+            }
+        })
+    </script>
+</html>
